@@ -1,0 +1,17 @@
+<%- include('layouts/header',{message,isAuthenticated}); %>
+<form action="/signin" method="post" class="mx-auto md:max-w-screen-md">
+    <h1 class="text-3xl text-gray-800 my-4">Welcome back !</h1>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+    <div>
+        <label class="form-label">Username:</label>
+        <input class="form-control" type="text" name="email" />
+    </div>
+    <div>
+        <label class="form-label">Password:</label>
+        <input class="form-control" type="password" name="password" />
+    </div>
+    <div>
+        <button class="btn bg-gray-800 text-white" type="submit">sign in</button>
+    </div>
+</form>
+<%- include('layouts/footer'); %>

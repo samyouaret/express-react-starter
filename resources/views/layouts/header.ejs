@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" content="<%= "csrfToken" %>">
+    <meta name="scope" content="<%= 'isAuthenticated ? "user" : "guest"' %>">
+    <meta name="user" content="<%= "user ? user.id: ''" %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= env('APP_NAME') %></title>
+    <link rel="stylesheet" href="/css/tailwind.css">
+</head>
+
+<body class="p-4">
+    <!-- component -->
+    <nav class="nav bg-green-400">
+        <!-- left side  -->
+        <div class="flex items-center" style="max-width:80%">
+            <img src="/logo.svg" class="w-16 h-16 rounded-full" />
+            <div class="ml-3">
+                <h3 class="font-semibold text-lg text-gray-600">
+                    <a href="#">Brand name</a>
+                </h3>
+                <p class="text-sm text-gray-500">
+                    cheering the world
+                </p>
+            </div>
+        </div>
+        <!-- right side start  -->
+        <!-- navbar toggler  -->
+        <div class="nav-toggler inline-block md:hidden">
+            <button
+                class="flex items-center mr-1 px-3 py-2 border rounded text-blue-800 border-blue-600 hover:text-blue-600 hover:border-blue-800">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <title>Menu</title>
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+            </button>
+        </div>
+        <!-- right side links -->
+        <div class="nav-links" data-collapsed="true">
+            <a class='nav-item' href="/home">Home</a>
+            <a class='nav-item bg-gray-800 text-white' href="/images/create">Upload
+                Image</a>
+            <a class='nav-item' href="/signin">Signin</a>
+            <a class='nav-item' href="/signup">Signup</a>
+            <!-- drop down menu -->
+            <div class="dropdown">
+                <a class='nav-item block relative' href="/user/">
+                    Joe Doe</a>
+                <div class="dropdown-content">
+                    <a class='text-gray-700 hover:bg-gray-100 text-sm py-1 ml-2 md:ml-0 px-3 block'
+                        href="/signup">Profile</a>
+                    <a class='text-gray-700 hover:bg-gray-100 text-sm py-1 ml-2 md:ml-0 px-3 block' href="#">
+                        <form action="/logout" method="post" class="inline">
+                            <div>
+                                <input class="border-0 bg-transparent cursor-pointer" type="submit" value="Log out" />
+                            </div>
+                        </form>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- right side end  -->
+    </nav>
+    <!-- endComponent -->
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function (e) {
+            e.preventDefault();
+            var toggler = document.querySelector('.nav-toggler');
+            toggler.addEventListener('click', function (e) {
+                var links = document.querySelector('.nav-links');
+                var collapsed = links.getAttribute('data-collapsed');
+                if (collapsed === "true") {
+                    links.style.height = "auto";
+                    links.style.overflow = 'auto';
+                    links.setAttribute('data-collapsed', 'false');
+                } else {
+                    links.style.height = 0;
+                    links.style.overflow = 'hidden';
+                    links.setAttribute('data-collapsed', 'true');
+                }
+            })
+        });
+    </script>

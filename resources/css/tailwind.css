@@ -1,0 +1,48 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+
+.nav {
+      @apply flex flex-wrap justify-between items-center;
+}
+
+.nav-links {
+      @apply flex flex-col w-full h-0 overflow-hidden;
+}
+
+@screen md {
+      .nav {
+            @apply justify-between;
+      }
+
+      .nav-links {
+            @apply flex-row justify-between;
+            width: auto;
+            height: auto !important;
+            overflow: visible !important;
+      }
+
+      .dropdown-content {
+            @apply absolute z-50 bg-white border border-gray-300 shadow-sm py-2 bg-clip-padding rounded right-1 hidden;
+            min-width: 160px;
+      }
+
+      .dropdown:hover .dropdown-content {
+            display: block;
+      }
+}
+
+.dropdown {
+      @apply inline-block relative;
+}
+
+.nav-item {
+      @apply text-gray-800 text-sm p-3;
+}
+
+.nav-item:hover {
+      @apply text-green-600 bg-green-200;
+}
+
+@tailwind utilities;

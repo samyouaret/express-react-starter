@@ -1,0 +1,36 @@
+const path = require("path")
+const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = {
+    mode: "development",
+    target: 'node', // in order to ignore built-in modules like path, fs, etc. 
+    entry: {
+        index: path.join(__dirname, "/resources/js/index.js"),
+        user: path.join(__dirname, "/resources/js/user.js"),
+        home: path.join(__dirname, "/resources/js/home.js"),
+    },
+    optimization: {
+        minimizer: [new TerserPlugin()],
+    },
+    output: {
+        path: path.join(__dirname, "/public/js/"),
+        filename: "[name].bundle.js"
+    },
+    module: {
+        rules: [
+            {
+                test: /.js|jsx$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        "presets": [
+                            "@babel/env",
+                            "@babel/react"
+                        ]
+                    }
+                },
+            },
+        ]
+    },
+}

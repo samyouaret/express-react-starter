@@ -1,0 +1,25 @@
+<%- include('layouts/header', {message }); %>
+<form action="/signup" method="post" class="mx-auto md:max-w-screen-md">
+    <h1 class="text-3xl text-gray-800 my-4">Join us now !</h1>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+    <div>
+        <label class="form-label">FirstName:</label>
+        <input class="form-control" type="text" name="firstname" />
+    </div>
+    <div>
+        <label class="form-label">LastName:</label>
+        <input class="form-control" type="text" name="lastname" />
+    </div>
+    <div>
+        <label class="form-label">Email:</label>
+        <input class="form-control" type="text" name="email" />
+    </div>
+    <div>
+        <label class="form-label">Password:</label>
+        <input class="form-control" type="password" name="password" />
+    </div>
+    <div>
+        <input class="btn bg-blue-700 text-white" type="submit" value="register" />
+    </div>
+</form>
+<%- include('layouts/footer'); %>

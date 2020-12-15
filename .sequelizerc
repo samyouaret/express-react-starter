@@ -1,0 +1,14 @@
+require('dotenv').config({
+    debug: true
+})
+const {
+    root_path,
+    config_path
+} = require('./utils/PathHelper');
+
+module.exports = {
+    'config': config_path('database.js'),
+    'models-path': root_path('database/models'),
+    'seeders-path': root_path('database/seeders'),
+    'migrations-path': root_path('database/migrations')
+};
