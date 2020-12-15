@@ -1,2 +1,1 @@
-# imagel
 # express-react-starter
