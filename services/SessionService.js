@@ -9,7 +9,7 @@ module.exports = {
             secret: env('APP_KEY'),
             resave: false,
             cookie: {
-                maxAge: 60000
+                maxAge:  6000
             },
             saveUninitialized: false,
             store: new Store({

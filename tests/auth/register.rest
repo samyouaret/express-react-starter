@@ -1,0 +1,4 @@
+POST http://localhost:8080/signup HTTP/1.1
+Content-Type:  application/x-www-form-urlencoded
+
+firstname=maily&lastname=britany&email=somemail@mail.com&password=test12345

@@ -10,6 +10,7 @@ module.exports = function validate(req, res, next) {
     if (req.isApi) {
         return res.status(422).json({ errors: formattedErrors })
     }
+    console.log(formattedErrors);
     req.flash('error', formattedErrors);
     return res.redirect('back');
 }
