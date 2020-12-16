@@ -8,6 +8,8 @@ const authenticate = require('../app/middlewares/auth/authenticate');
 const {
     rules
 } = require('../validators/userValidator');
+
+authValidator = require('../validators/auth-validator');
 const validate = require('../validators/validate');
 
 const router = express.Router();
@@ -21,6 +23,6 @@ router.get('/signup', guest, AuthController.register.bind(AuthController));
 router.get('/signin', guest, AuthController.login.bind(AuthController));
 
 router.post('/signup', guest, rules(), validate, register('/home'));
-router.post('/signin', guest, authenticate('/home'));
+router.post('/signin', guest,authValidator.rules(), authenticate('/home'));
 // router.post('/logout', AuthController.logout.bind(AuthController));
 module.exports = router;

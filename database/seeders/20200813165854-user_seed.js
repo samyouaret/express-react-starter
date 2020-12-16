@@ -11,10 +11,11 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [{
       firstName: 'John',
       lastName: 'Doe',
-      email: 'John@Doe.com',
-      password: await hash('john123456'),
+      email: 'joe@Doe.com',
+      password: await hash('joe123456'),
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      email_confirmed: false
     }]);
   },
   down: (queryInterface, Sequelize) => {

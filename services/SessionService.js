@@ -17,6 +17,8 @@ module.exports = {
                 retries: 0
             })
         }));
+        console.log("loaded session");
         app.use(flash());
+        // process.exit(1);
     }
 }
