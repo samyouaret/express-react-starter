@@ -1,5 +1,5 @@
-const UserRepository = require('../../app/repositories/UserRepository');
 const connection = require('../../app/sequelize');
+const UserRepository = require('../../app/repositories/UserRepository');
 const userRepo = new UserRepository();
 const fakeUser = require('../fakers/user');
 

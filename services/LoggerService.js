@@ -4,7 +4,7 @@ const fs = require('fs');
 
 module.exports = {
     start(app) {
-       // create a write stream (in append mode)
+        // create a write stream (in append mode)
         var accessLogStream = fs.createWriteStream(pathHelper.root_path('storage/logs/access.log'), {
             flags: 'a'
         })

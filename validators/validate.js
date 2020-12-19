@@ -1,4 +1,6 @@
-const { validationResult } = require('express-validator');
+const {
+    validationResult
+} = require('express-validator');
 
 module.exports = function validate(req, res, next) {
     const errors = validationResult(req);
@@ -8,9 +10,10 @@ module.exports = function validate(req, res, next) {
     const formattedErrors = [];
     errors.array().map(err => formattedErrors.push(err.msg))
     if (req.isApi) {
-        return res.status(422).json({ errors: formattedErrors })
+        return res.status(422).json({
+            errors: formattedErrors
+        })
     }
-    console.log(formattedErrors);
     req.flash('error', formattedErrors);
     return res.redirect('back');
 }

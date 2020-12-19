@@ -24,7 +24,6 @@ class UserRepository {
                         return resolve(user);
                     }
                     // wrong password
-                    console.log("\n===== wrong password=== \n");
                     return reject({
                         error: "error with credentials given"
                     });
@@ -37,7 +36,6 @@ class UserRepository {
                 }
             } else {
                 // user not found
-                console.log("\n===== unfound user === \n");
                 return reject({
                     error: "error with credentials given"
                 });
@@ -66,7 +64,6 @@ class UserRepository {
                 reject({
                     error: "oops something wrong happen",
                 })
-                console.log(err);
                 return;
             }
             this.create({

@@ -9,7 +9,7 @@ module.exports = {
             secret: env('APP_KEY'),
             resave: false,
             cookie: {
-                maxAge:  6000
+                maxAge: 6000
             },
             saveUninitialized: false,
             store: new Store({
@@ -17,8 +17,6 @@ module.exports = {
                 retries: 0
             })
         }));
-        console.log("loaded session");
         app.use(flash());
-        // process.exit(1);
     }
 }

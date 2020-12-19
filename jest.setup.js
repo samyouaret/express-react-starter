@@ -1,4 +1,4 @@
-require('dotenv').config({ debug: true });
+require('dotenv').config({ debug: false });
 // to ignore error encoding not recognized
 require('mysql2/node_modules/iconv-lite').encodingExists('foo');
 const request = require('supertest');
