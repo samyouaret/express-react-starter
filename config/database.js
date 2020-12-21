@@ -1,6 +1,4 @@
-const {
-    env
-} = require('../utils/PathHelper');
+const { env } = require('../utils/PathHelper');
 
 module.exports = {
     development: {
