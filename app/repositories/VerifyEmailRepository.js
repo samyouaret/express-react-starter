@@ -39,8 +39,7 @@ class VerifyEmailRepository {
             });
             if (instance) {
                 try {
-                    // date comparison  as strings??
-                    if (new Date(Date.now()).toString() > instance.expireAt.toString()) {
+                    if (new Date(Date.now()) > instance.expireAt) {
                         return reject({
                             message: "time expired"
                         });

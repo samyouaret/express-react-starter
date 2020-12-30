@@ -8,10 +8,13 @@ module.exports = function authenticate(successRedirect = "/", errorRedirect = 'b
         try {
             let user = await userRepo.authenticate(req.body.email, req.body.password);
             // 4 hours
-            req.session.cookie.maxAge = 3600000 * 4;
-            req.session.user = user;
-            req.isAuthenticated = true;
-            res.redirect(successRedirect);
+            req.session.regenerate((err) => {
+                if (err) throw err;
+                req.session.cookie.maxAge = 3600000 * 4;
+                req.session.user = user;
+                req.isAuthenticated = true;
+                res.redirect(successRedirect);
+            });
         } catch (error) {
             if (req.isApi) {
                 return req.status(401).json(error);
