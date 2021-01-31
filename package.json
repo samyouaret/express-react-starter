@@ -16,7 +16,7 @@
     "seed": "cross-env NODE_ENV=test sequelize-cli db:seed:all",
     "migrate:reset": "sequelize-cli db:migrate:undo:all && yarn run migrate",
     "pretest": "cross-env NODE_ENV=test yarn run migrate:reset && yarn run seed",
-    "test": "cross-env NODE_ENV=test jest -- tests --runInBand --detectOpenHandles",
+    "test": "cross-env NODE_ENV=test jest --env node -- tests --runInBand --detectOpenHandles",
     "coverage": "cross-env NODE_ENV=test yarn run pretest && jest -- tests --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
@@ -35,10 +35,9 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "mysql2": "^2.1.0",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "redis": "^3.0.2",
     "sequelize": "^6.3.3",
     "session-file-store": "^1.5.0",
     "tailwindcss": "^2.0.2"

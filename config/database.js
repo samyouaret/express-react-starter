@@ -13,7 +13,9 @@ module.exports = {
             waitForConnections: true,
             connectionLimit: 10,
             queueLimit: 0
-        }
+        },
+        timezone: '+01:00',
+        logging: false,
     },
     test: {
         username: env('DB_USERNAME'),
@@ -23,9 +25,10 @@ module.exports = {
         port: 3306,
         dialect: env('DB_CONNECTION'),
         dialectOptions: {
-            bigNumberStrings: true
+            bigNumberStrings: true,
         },
-        logging: false
+        logging: false,
+        timezone: '+01:00',
     },
     production: {
         username: env('DB_USERNAME'),

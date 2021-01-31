@@ -1,21 +1,19 @@
 const session = require('express-session');
 const flash = require('connect-flash');
+const { getSessionStore } = require('../utils/factory');
 
-// let store  = config('store') == 'file' ? require('session-file-store'): require('redis-connect');
-let Store = require('session-file-store')(session);
+let store = getSessionStore(session);
+
 module.exports = {
     start(app) {
         app.use(session({
             secret: env('APP_KEY'),
             resave: false,
             cookie: {
-                maxAge: 60000
+                maxAge: 6000
             },
             saveUninitialized: false,
-            store: new Store({
-                path: config('session').path,
-                retries: 0
-            })
+            store
         }));
         app.use(flash());
     }

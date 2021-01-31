@@ -1,0 +1,4 @@
+POST http://localhost:8080/signin HTTP/1.1
+Content-Type:  application/x-www-form-urlencoded
+
+email=joe@Doe.com&password=joe123456

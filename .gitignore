@@ -7,3 +7,4 @@ public/storage/
 storage/*
 public/js/*
 public/css/*
+*.rdb

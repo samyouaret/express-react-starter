@@ -1,5 +1,7 @@
+const path = require('path');
+
 module.exports = {
-    // store: "redis"
     store: "file",
-    path:'./storage/sessions'
+    // store: "redis",
+    path: path.resolve('../storage/sessions')
 };

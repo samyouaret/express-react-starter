@@ -1,4 +1,4 @@
-require('dotenv').config({ debug: true });
+require('dotenv').config({ debug: false });
 const Application = require('./Application');
 
 module.exports = {
