@@ -2,6 +2,7 @@ const connection = require('../../app/sequelize');
 const UserRepository = require('../../app/repositories/UserRepository');
 const userRepo = new UserRepository();
 const fakeUser = require('../fakers/user');
+const redisClient = require('../../app/redis-client');
 
 beforeAll((done) => {
     app.init();
@@ -11,6 +12,7 @@ beforeAll((done) => {
 afterAll(async () => {
     await connection.close();
     // setTimeout(() => process.exit(), 1000)
+    redisClient.quit();
 });
 
 describe('signing up a new user actions', () => {
