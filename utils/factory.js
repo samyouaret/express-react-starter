@@ -13,19 +13,8 @@ module.exports = {
                 retries: 0
             });
         } else if (config('session').store == 'redis') {
-            let redis = require('redis');
+            let redisClient = require('../app/redis-client');
             let RedisStore = require('connect-redis')(session);
-            let redisClient = redis.createClient({
-                host: env('REDIS_HOST'),
-                port: env('REDIS_PORT')
-            })
-            redisClient.on('error', console.error);
-            redisClient.on('connect', function (err) {
-                console.log('Connected to redis successfully');
-            });
-            process.on("exit", function () {
-                redisClient.quit();
-            });
 
             return new RedisStore({ client: redisClient });
         }

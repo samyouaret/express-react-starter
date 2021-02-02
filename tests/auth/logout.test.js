@@ -1,5 +1,6 @@
 const connection = require('../../app/sequelize');
 const fakeUser = require('../fakers/user');
+let redisClient = require('../../app/redis-client');
 
 beforeAll((done) => {
     app.init();
@@ -9,6 +10,7 @@ beforeAll((done) => {
 afterAll(async () => {
     await connection.close();
     // setTimeout(() => process.exit(), 1000)
+    redisClient.quit();
 });
 
 describe('logout actions', () => {
