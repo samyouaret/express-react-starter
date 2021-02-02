@@ -16,7 +16,7 @@
     "seed": "cross-env NODE_ENV=test sequelize-cli db:seed:all",
     "migrate:reset": "sequelize-cli db:migrate:undo:all && yarn run migrate",
     "pretest": "cross-env NODE_ENV=test yarn run migrate:reset && yarn run seed",
-    "test": "cross-env NODE_ENV=test jest --env node -- tests --runInBand"
+    "test": "cross-env NODE_ENV=test jest --env node -- tests --runInBand --forceExit"
   },
   "dependencies": {
     "babel-loader": "^8.1.0",

@@ -7,8 +7,5 @@ redisClient.on('error', console.error);
 redisClient.on('connect', function (err) {
     console.log('Connected to redis successfully');
 });
-redisClient.on('connect', function (err) {
-    console.log('Connected to redis successfully');
-});
 
 module.exports = redisClient;
