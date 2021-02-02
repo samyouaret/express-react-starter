@@ -1,13 +1,13 @@
 language: node_js
 node_js:
-  - 'v12.20.0'
+  - 'v14.15.4'
 install: yarn install
 services:
   - mysql
+  - redis-server
 before_script:
   - cp .env.example .env
   - mkdir storage/sessions
   - mkdir storage/logs
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test_db;'
 script: yarn test
-after_success: yarn run coverage

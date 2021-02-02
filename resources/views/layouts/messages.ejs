@@ -1,0 +1,20 @@
+<div class="my-2">
+<% if (messages.errors && messages.errors.length > 0 ) { %>
+    <div class="p-4 rounded-md text-center w-auto mx-auto text-lg bg-red-200 md:w-1/2">
+        <% for (const key in messages.errors) { %>
+            <small class='text-red-600'>
+                <%= messages.errors[key] %>
+            </small><br>
+        <% } %>
+    </div>
+<% } %>
+<% if (messages.success && messages.success.length > 0 ) { %>
+    <div class="p-4 rounded-md text-center w-auto mx-auto text-lg bg-green-200 md:w-1/2">
+        <% for (const key in messages.success) { %>
+            <small class='text-green-500'>
+            <%= messages.success[key] %>
+            </small>
+        <% } %>
+    </div>
+<% } %>
+</div>

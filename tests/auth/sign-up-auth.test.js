@@ -8,9 +8,9 @@ beforeAll((done) => {
     done();
 });
 
-afterAll(done => {
-    connection.close();
-    done()
+afterAll(async () => {
+    await connection.close();
+    // setTimeout(() => process.exit(), 1000)
 });
 
 describe('signing up a new user actions', () => {

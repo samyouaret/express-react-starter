@@ -5,5 +5,6 @@ module.exports = {
     email: 'joe@doe.com',
     password: 'joe123456',
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
+    email_confirmed: 0
 }

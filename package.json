@@ -10,14 +10,13 @@
   "scripts": {
     "start": "yarn run buildcss & webpack && nodemon public/index.js",
     "buildcss": "postcss resources/css/*.css --base --dir public/css --env=dev --watch",
-    "watch": "nodemon public/index.js -w & yarn run buildcss & webpack --w --mode development",
+    "watch": "nodemon public/index.js -w & yarn run buildcss & webpack -w --mode development",
     "build": "webpack --mode production",
     "migrate": "sequelize-cli db:migrate",
     "seed": "cross-env NODE_ENV=test sequelize-cli db:seed:all",
     "migrate:reset": "sequelize-cli db:migrate:undo:all && yarn run migrate",
     "pretest": "cross-env NODE_ENV=test yarn run migrate:reset && yarn run seed",
-    "test": "cross-env NODE_ENV=test jest --env node -- tests --runInBand --detectOpenHandles",
-    "coverage": "cross-env NODE_ENV=test yarn run pretest && jest -- tests --coverage && cat ./coverage/lcov.info | coveralls"
+    "test": "cross-env NODE_ENV=test jest --env node -- tests --runInBand --detectOpenHandles --forceExit"
   },
   "dependencies": {
     "babel-loader": "^8.1.0",

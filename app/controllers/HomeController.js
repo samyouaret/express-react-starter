@@ -3,7 +3,7 @@ const sequelize = require('../sequelize');
 class HomeController {
 
     index(req, res) {
-        res.render('index');
+        res.renderWithMessages('index');
     }
 
     async home(req, res) {

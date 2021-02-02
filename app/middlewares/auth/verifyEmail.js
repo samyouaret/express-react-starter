@@ -13,7 +13,7 @@ module.exports = function verifyEmail(successCallback = null, errorCallback = nu
                 successCallback(req, res, message);
             }
         } catch (error) {
-            if (successCallback) {
+            if (errorCallback) {
                 errorCallback(req, res, error);
             }
         }

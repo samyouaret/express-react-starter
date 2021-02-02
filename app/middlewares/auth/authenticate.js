@@ -3,7 +3,7 @@ const userRepo = new UserRepository();
 const VerifyEmailRepository = require('../../repositories/VerifyEmailRepository');
 const VerifyEmailRepo = new VerifyEmailRepository();
 
-module.exports = function authenticate(successRedirect = "/", errorRedirect = 'back') {
+module.exports = function authenticate(successRedirect = "/home", errorRedirect = 'back') {
     return async function (req, res, next) {
         try {
             let user = await userRepo.authenticate(req.body.email, req.body.password);
@@ -12,7 +12,6 @@ module.exports = function authenticate(successRedirect = "/", errorRedirect = 'b
                 if (err) throw err;
                 req.session.cookie.maxAge = 3600000 * 4;
                 req.session.user = user;
-                req.isAuthenticated = true;
                 res.redirect(successRedirect);
             });
         } catch (error) {

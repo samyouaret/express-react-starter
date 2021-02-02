@@ -1,5 +1,5 @@
 module.exports = function (req, res, next) {
-    if (req.user && req.user.email_confirmed) {
+    if (req.session.user && req.session.user.email_confirmed) {
         return next();
     }
     res.redirect('back');

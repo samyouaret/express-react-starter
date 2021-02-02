@@ -11,8 +11,8 @@ afterAll(async () => {
     // setTimeout(() => process.exit(), 1000)
 });
 
-describe('authentication actions', () => {
-    it('should authenticate user', (done) => {
+describe('logout actions', () => {
+    it('should logout user', (done) => {
         let user = Object.assign({}, fakeUser);
         const credentials = {
             email: user.email,
@@ -25,21 +25,26 @@ describe('authentication actions', () => {
             .expect('Location', '/home')
             .end((err, res) => {
                 expect(err).toBeNull();
-                done();
+                let loginCookie = res.headers['set-cookie'];
+                request.agent(app.getServer())
+                    .post('/logout')
+                    .set('cookie', loginCookie)
+                    .expect(302)
+                    .expect('Location', '/')
+                    .end((error, response) => {
+                        let resCookie = response.headers['set-cookie'];
+                        expect(error).toBeNull();
+                        expect(resCookie).toBeUndefined();
+                        done();
+                    });
             });
     });
-
-    it('should fail to authenticate with invalid credentials', (done) => {
-        const credentials = {
-            email: "",
-            password: ''
-        };
+    
+    it('should redirect guest to signin page', (done) => {
         request.agent(app.getServer())
-            .post('/signin')
-            .send(urlencode(credentials))
+            .post('/logout')
             .expect(302)
-            // this back location 
-            .expect('Location', '/')
+            .expect('Location', '/signin')
             .end((err, res) => {
                 expect(err).toBeNull();
                 done();

@@ -9,6 +9,8 @@ module.exports = function validate(req, res, next) {
     }
     const formattedErrors = [];
     errors.array().map(err => formattedErrors.push(err.msg))
+    console.log('some validation error occur');
+    console.log(formattedErrors);
     if (req.isApi) {
         return res.status(422).json({
             errors: formattedErrors

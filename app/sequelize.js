@@ -5,7 +5,7 @@ const {
 const {
     config_path,
     root_path
-} = require('../utils/PathHelper');
+} = require('../utils/pathHelper');
 const config = require(config_path('database'));
 const fs = require("fs");
 

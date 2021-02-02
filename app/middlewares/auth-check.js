@@ -1,5 +1,5 @@
 module.exports = function (req, res, next) {
-    if (req.user) {
+    if (req.session.user) {
         return next();
     }
     if(req.isApi){

@@ -6,16 +6,15 @@ class AuthController {
     }
 
     login(req, res) {
-        res.renderWithMessages('login', req, res);
+        res.renderWithMessages('login');
     }
 
     register(req, res) {
-        res.renderWithMessages('register', req, res);
+        res.renderWithMessages('register');
     }
 
     logout(req, res) {
-        req.logout();
-        res.redirect('/');
+
     }
 }
 

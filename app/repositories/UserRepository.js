@@ -21,12 +21,12 @@ class UserRepository {
                 try {
                     const match = await bcrypt.compare(password, user.password);
                     if (match) {
-                        return resolve(user);
+                        resolve(user);
+                    } else {
+                        reject({
+                            error: "error with credentials given"
+                        });
                     }
-                    // wrong password
-                    return reject({
-                        error: "error with credentials given"
-                    });
                 } catch (err) {
                     reject({
                         error: "something went wrong"
@@ -36,7 +36,7 @@ class UserRepository {
                 }
             } else {
                 // user not found
-                return reject({
+                reject({
                     error: "error with credentials given"
                 });
             }
@@ -67,12 +67,12 @@ class UserRepository {
                 return;
             }
             this.create({
-                    firstName: firstname,
-                    lastName: lastname,
-                    email: email,
-                    password: password,
-                    email_confirmed: 0
-                }).then(resolve)
+                firstName: firstname,
+                lastName: lastname,
+                email: email,
+                password: password,
+                email_confirmed: 0
+            }).then(resolve)
                 .catch(reject);
         });
     }

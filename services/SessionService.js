@@ -16,5 +16,8 @@ module.exports = {
             store
         }));
         app.use(flash());
+    },
+    stop(){
+        
     }
 }
